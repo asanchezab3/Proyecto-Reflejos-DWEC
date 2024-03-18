@@ -1,10 +1,7 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client' 
-import Datos from './prueba_db';
+import React from "react";
+import ReactDOM from "react-dom";
+import App  from "./Components/App";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <>
-    <h1>Prueba</h1>
-    <Datos/>
-  </>
-)
+//Coger con DOM  el elemento en donde se va a montar el componerte APP de React
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
