@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { db } from '../firebase/config'; 
 import { collection, getDocs } from 'firebase/firestore';
+import IUserLogin from "../Interface/IUserLogin";
 
 const LoginComponent = () => {
-  const [formState, setFormState] = useState({
-    user: "",
-    password: "",
+  const [formState, setFormState] = useState<IUserLogin>({
+    user: '',
+    password: '',
   });
 
   const handleInputChange = (event) => {
@@ -15,6 +16,8 @@ const LoginComponent = () => {
 
   const handleSubmit = (event) => {
     console.log("The form was submitted: ", formState);
+    console.log("user: ", formState.user);
+    console.log("pass: ", formState.password);
     event.preventDefault();
   };
 
