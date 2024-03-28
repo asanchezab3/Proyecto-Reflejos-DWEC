@@ -1,6 +1,5 @@
 interface IUserLogin {
-  user: string,
-  password: string
+  email: string,
 }
 
 export default IUserLogin;
