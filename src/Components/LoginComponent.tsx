@@ -24,7 +24,7 @@ const LoginComponent = () => {
     setAlerta(true);
     users.forEach((user) => {
       if (user.data().email === email) {
-        sessionStorage.setItem("userID", JSON.stringify(user.data().uid));
+        sessionStorage.setItem("userID", JSON.stringify(user.data().email));
         let deps: string[] = [];
         for (let i = 0; i < user.data().deortistas.length; i++) {
           deps.push(user.data().deortistas[i]._key.path.segments[6]);
