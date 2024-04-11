@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { db } from "../firebase/config";
-import { collection, getDocs } from "firebase/firestore";
 import IUserLogin from "../Interface/IUserLogin";
 import DatosComponent from "./DatosComponent";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const LoginComponent = () => {
   const [formState, setFormState] = useState<IUserLogin>({
     email: "",
+    password: "",
   });
   const [alerta, setAlerta] = useState<boolean | null>();
   const handleInputChange = (event) => {
@@ -15,24 +15,23 @@ const LoginComponent = () => {
   };
 
   const handleSubmit = (event) => {
-    getDatos(formState.email);
-    event.preventDefault();
-  };
+    console.log("submit");
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, formState.email, formState.password)
+      .then((userCredential) => {
+        console.log("Logeado correctamente");
+        sessionStorage.setItem("userID", userCredential.user.email!);
+        userCredential.user.getIdToken().then((res) => {
+          sessionStorage.setItem("token", res);
+        });
 
-  let getDatos = async (email: string) => {
-    const users = await getDocs(collection(db, "users"));
-    setAlerta(true);
-    users.forEach((user) => {
-      if (user.data().email === email) {
-        sessionStorage.setItem("userID", JSON.stringify(user.data().email));
-        let deps: string[] = [];
-        for (let i = 0; i < user.data().deortistas.length; i++) {
-          deps.push(user.data().deortistas[i]._key.path.segments[6]);
-        }
-        sessionStorage.setItem("deportistas", JSON.stringify(deps));
         setAlerta(false);
-      }
-    });
+      }) 
+      .catch((error) => {
+        console.error(error.code, error.message);
+        setAlerta(true);
+      });
+    event.preventDefault();
   };
 
   return (
@@ -69,6 +68,24 @@ const LoginComponent = () => {
               />
               <div id="emailHelp" className="form-text">
                 Usuario para poder acceder a la aplicación. Formato de email.
+              </div>
+            </div>
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label">
+                Contraseña
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                name="password"
+                id="password"
+                value={formState.password}
+                onChange={handleInputChange}
+                aria-describedby="passwordHelp"
+                required
+              />
+              <div id="passwordHelp" className="form-text">
+                Contraseña para poder acceder a la aplicación.
               </div>
             </div>
             <div className="row">

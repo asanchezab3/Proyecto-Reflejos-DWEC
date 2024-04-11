@@ -7,12 +7,13 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCYughDDbiJhNHfIYjcto9HPxDHo6BUX4c",
-  authDomain: "reflejos-7fd7b.firebaseapp.com",
-  projectId: "reflejos-7fd7b",
-  storageBucket: "reflejos-7fd7b.appspot.com",
-  messagingSenderId: "827655524996",
-  appId: "1:827655524996:web:e89a46d5434e021c3868d1"
+  apiKey: "AIzaSyDeoZ1EpcN_DhxZG0Sgtjf4idDjGZhZl4c",
+  authDomain: "reflejos-d3e62.firebaseapp.com",
+  projectId: "reflejos-d3e62",
+  storageBucket: "reflejos-d3e62.appspot.com",
+  messagingSenderId: "769157378948",
+  appId: "1:769157378948:web:de8c785c6f3d936331e3d1",
+  measurementId: "G-9YG59TQ632"
 };
 
 // Initialize Firebase

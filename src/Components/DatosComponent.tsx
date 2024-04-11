@@ -1,21 +1,26 @@
 import React, { useState, useEffect } from "react";
 import LoginComponent from "./LoginComponent";
+import { getAuth, signOut } from "firebase/auth";
 
 const DatosComponent = () => {
   const [userEmail, setUserEmail] = useState<string | null | undefined>();
   const [login, setLogin] = useState<boolean | null>();
 
   useEffect(() => {
-    const storedEmail = sessionStorage.getItem("userID")?.split('"') || [];
-    if (storedEmail.length > 1) {
-      setUserEmail(storedEmail[1]);
-    }
+    setUserEmail(sessionStorage.getItem("userID"));
   }, []);
 
   const cerrarSesion = () => {
-    sessionStorage.removeItem("userID");
-    sessionStorage.removeItem("deportistas");
-    setLogin(true);
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        sessionStorage.removeItem("userID");
+        sessionStorage.removeItem("token");
+        setLogin(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
