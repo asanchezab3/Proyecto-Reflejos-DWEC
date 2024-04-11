@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import IUserLogin from "../Interface/IUserLogin";
 import DatosComponent from "./DatosComponent";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { db } from '../firebase/config'; 
+import { collection, getDocs } from 'firebase/firestore';
 
 const LoginComponent = () => {
   const [formState, setFormState] = useState<IUserLogin>({
@@ -33,6 +35,22 @@ const LoginComponent = () => {
       });
     event.preventDefault();
   };
+  let getDatos = async (email: string) => {
+    const users = await getDocs(collection(db, "users"));
+    setAlerta(true);
+    users.forEach((user) => {
+      if (user.data().email === email) {
+        sessionStorage.setItem("userID", JSON.stringify(user.data().email));
+        let deps: string[] = [];
+        for (let i = 0; i < user.data().deortistas.length; i++) {
+          deps.push(user.data().deortistas[i]._key.path.segments[6]);
+        }
+        sessionStorage.setItem("deportistas", JSON.stringify(deps));
+        setAlerta(false);
+      }
+    });
+  };
+
 
   return (
     <div className="mt-3">
