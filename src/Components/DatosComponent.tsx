@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import LoginComponent from "./LoginComponent";
 import { getAuth, signOut } from "firebase/auth";
+import Info from "./Info";
 
 const DatosComponent = () => {
   const [userEmail, setUserEmail] = useState<string | null | undefined>();
@@ -51,31 +52,7 @@ const DatosComponent = () => {
             </div>
           </nav>
           <div className="row mt-3">
-            <table className="table">
-              <thead>
-                <tr>
-                  <th scope="col">Distancia</th>
-                  <th scope="col">Fecha</th>
-                  <th scope="col">Deportista</th>
-                  <th scope="col">Programa</th>
-                  <th scope="col">Tpo. Reaccion</th>
-                  <th scope="col">Num. Dispositivos apagados</th>
-                  <th scope="col">Num. Fallos</th>
-                  <th scope="col">Tpo. total ejercicio</th>
-                  <th scope="col">Tpo. total empleado</th>
-                  <th scope="col">Ejecicio</th>
-                  <th scope="col">Programa</th>
-                </tr>
-              </thead>
-              <tbody>
-                {/* <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr> */}
-              </tbody>
-            </table>
+            <Info/>
           </div>
         </div>
       )}
