@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import LoginComponent from "./LoginComponent";
 import { getAuth, signOut } from "firebase/auth";
 import Info from "./Info";
+import Cuadricula from "./Cuadricula.jsx";
 
 const DatosComponent = () => {
   const [userEmail, setUserEmail] = useState<string | null | undefined>();
   const [login, setLogin] = useState<boolean | null>();
+  const [modoTabla, setModoTabla] = useState(1)
 
   useEffect(() => {
     setUserEmail(sessionStorage.getItem("userID"));
@@ -51,9 +53,22 @@ const DatosComponent = () => {
               </div>
             </div>
           </nav>
-          <div className="row mt-3">
-            <Info/>
+
+          
+          <div>
+            <button onClick={() => setModoTabla((modoTabla==1) ? 0 : 1)}>Cambiar vista</button>
           </div>
+
+          <div className="row mt-3">
+            {
+              (modoTabla==1) ? (
+                <Info />
+              ) : (
+                <Cuadricula/>
+              )
+            }
+          </div> 
+          
         </div>
       )}
     </div>

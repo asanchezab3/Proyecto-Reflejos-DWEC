@@ -23,6 +23,11 @@ function Info() {
 
 
   return (
+    <>
+    <p></p>
+    <h1>RESULTADOS</h1>
+    <p></p>
+    <p></p>
     <table>
       <thead>
         <tr>
@@ -35,7 +40,6 @@ function Info() {
           <th>Fallos</th>
           <th>Tiempo ejercicio</th>
           <th>Tiempo total</th>
-          <th>ID ejercicio</th>
         </tr>
       </thead>
       <tbody>        
@@ -51,13 +55,13 @@ function Info() {
               <td>{resultado.numerofallos|| 'No definido'}</td>
               <td>{resultado.tiempototalejercicio || 'No definido'}</td>
               <td>{resultado.tiempototalempleado|| 'No definido'}</td>
-              <td>{resultado.tipoejercicio._key.path.segments[6] || 'No definido'}</td>
             </tr>
           ))
         }
 
       </tbody>
     </table>
+    </>
   );
 }
     
