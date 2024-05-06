@@ -7,7 +7,7 @@ import Cuadricula from "./Cuadricula.jsx";
 const DatosComponent = () => {
   const [userEmail, setUserEmail] = useState<string | null | undefined>();
   const [login, setLogin] = useState<boolean | null>();
-  const [modoTabla, setModoTabla] = useState(1)
+  const [modoTabla, setModoTabla] = useState(1);
 
   useEffect(() => {
     setUserEmail(sessionStorage.getItem("userID"));
@@ -54,21 +54,18 @@ const DatosComponent = () => {
             </div>
           </nav>
 
-          
           <div>
-            <button onClick={() => setModoTabla((modoTabla==1) ? 0 : 1)}>Cambiar vista</button>
+            <button
+              className="btn btn-outline-info"
+              onClick={() => setModoTabla(modoTabla == 1 ? 0 : 1)}
+            >
+              <i className="bi bi-gear-wide-connected"></i> Cambiar vista
+            </button>
           </div>
 
           <div className="row mt-3">
-            {
-              (modoTabla==1) ? (
-                <Info />
-              ) : (
-                <Cuadricula/>
-              )
-            }
-          </div> 
-          
+            {modoTabla == 1 ? <Info /> : <Cuadricula />}
+          </div>
         </div>
       )}
     </div>
