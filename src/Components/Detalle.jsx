@@ -28,8 +28,7 @@ function Detalle({
 
   let style = {
     padding: "70px",
-    cursor: "pointer",
-    textAlign: index % 2 ? "left" : "rigth",
+    boxShadow: "inset 0px 0px 0px 1px black" 
   };
 
   let textStyle = { textAlign: index % 2 ? "left" : "right" };

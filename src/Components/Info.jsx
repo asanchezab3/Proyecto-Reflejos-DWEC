@@ -18,36 +18,54 @@ function Info() {
     getDatos();
   }, []);
 
+  let tablaStyle = {
+    border: "1px solid black"        
+  };
+
+  let headerStyle = {
+    backgroundColor: "#e6e6e6",   
+    border: "1px solid black",
+    textAlign: "center",
+    padding: "17px"
+  }
+  
+  let cellStyle = {
+    backgroundColor: "#f8f8f8",   
+    border: "1px solid black",
+    textAlign: "center",
+    padding: "7px"
+  }
+
   return (
     <>
       <p></p>
       <h1>RESULTADOS</h1>
       <p></p>
       <p></p>
-      <table>
+      <table style={tablaStyle}>
         <thead>
           <tr>
-            <th>Distancia</th>
-            <th>Fecha</th>
-            <th>Tiempo reacción</th>
-            <th>Dispositivos apagados</th>
-            <th>Fallos</th>
-            <th>Tiempo ejercicio</th>
-            <th>Tiempo total</th>
+            <th style={headerStyle}>Distancia</th>
+            <th style={headerStyle}>Fecha</th>
+            <th style={headerStyle}>Tiempo reacción</th>
+            <th style={headerStyle}>Dispositivos apagados</th>
+            <th style={headerStyle}>Fallos</th>
+            <th style={headerStyle}>Tiempo ejercicio</th>
+            <th style={headerStyle}>Tiempo total</th>
           </tr>
         </thead>
         <tbody>
           {resultados.map((resultado, index) => (
             <tr key={index}>
-              <td>{resultado.distanciaaldispositivo || "No definido"}</td>
-              <td>
+              <td style={cellStyle}>{resultado.distanciaaldispositivo || "No definido"}</td>
+              <td style={cellStyle}>
                 {resultado.fecha.toDate().toLocaleString() || "No definido"}
               </td>
-              <td>{resultado.mediatiemporeaccion || "No definido"}</td>
-              <td>{resultado.numerodispositivosapagados || "No definido"}</td>
-              <td>{resultado.numerofallos || "No definido"}</td>
-              <td>{resultado.tiempototalejercicio || "No definido"}</td>
-              <td>{resultado.tiempototalempleado || "No definido"}</td>
+              <td style={cellStyle}>{resultado.mediatiemporeaccion || "No definido"}</td>
+              <td style={cellStyle}>{resultado.numerodispositivosapagados || "No definido"}</td>
+              <td style={cellStyle}>{resultado.numerofallos || "No definido"}</td>
+              <td style={cellStyle}>{resultado.tiempototalejercicio || "No definido"}</td>
+              <td style={cellStyle}>{resultado.tiempototalempleado || "No definido"}</td>
             </tr>
           ))}
         </tbody>
