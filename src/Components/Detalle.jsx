@@ -15,7 +15,6 @@ function Detalle({
   
   const [deportista, setDeportista] = useState();
   const [programa, setPrograma] = useState();
-  const [persona, setPersona] = useState();
   /*
   Lo más importante de este componente es que buscaremos la información de cada deportista y de cada programa
   (según su id) en otras tablas. Esto lo haremos de la siguiente manera:
@@ -26,7 +25,7 @@ function Detalle({
       let deportistaRef = doc(db, "deportistas", idDeportista);
       let deportistaDoc = await getDoc(deportistaRef);
       setDeportista(deportistaDoc.data());
-//setPersona(data.find(item => item.id === idDeportista));
+
       //Se cogen los datos del programa según su tabla y su número identificativo (id)
       let programaRef = doc(db, "programas", idPrograma);
       let programaDoc = await getDoc(programaRef);
