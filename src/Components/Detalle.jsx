@@ -45,7 +45,7 @@ function Detalle({
   };
 
   let textStyle = { textAlign: index % 2 ? "right" : "left" };
-  let imageStyle = { maxWidth: "80%", height: "auto" };
+  let imageStyle = {  maxWidth: "80%", height: "auto",  borderRadius: "7pt"};
 
   //Buscamos el id del deportista en el archivo de data. Si el deportista existe sacaremos su género y su indice para poder buscar su foto en la API randomuser
   let persona2 = data.find(persona => persona.id === idDeportista);
